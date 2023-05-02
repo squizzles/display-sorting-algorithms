@@ -1,7 +1,6 @@
-
 enum Algorithm {
-    None,
-    LinearSort
+	None,
+	LinearSort,
 }
 
 export default Algorithm;
