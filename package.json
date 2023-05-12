@@ -12,6 +12,9 @@
 		"test": "echo \"No tests\""
 	},
 	"dependencies": {
+		"@material-ui/core": "^4.12.4",
+		"@mui/material": "^5.12.3",
+		"@mui/styles": "^5.12.3",
 		"@reduxjs/toolkit": "^1.9.5",
 		"@types/node": "18.16.0",
 		"@types/react": "18.0.38",
