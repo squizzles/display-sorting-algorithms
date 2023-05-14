@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from './store';
+import type { AppState } from './store';
 import Algorithm from '@/algos/Algorithm';
+import { HYDRATE } from "next-redux-wrapper";
+import App from 'next/app';
 
 // Define a type for the slice state
 interface AlgoState {
 	values: Array<number>;
-	type: Algorithm;
+	type: string;
 }
 
 // Define the initial state using that type
@@ -28,11 +30,21 @@ export const algoSlice = createSlice({
 			state.values = action.payload;
 		},
 	},
+
+	// Special reducer for hydrating the state. Special case for next-redux-wrapper
+	extraReducers: {
+		[HYDRATE]: (state, action) => {
+		  return {
+			...state,
+			...action.payload.auth,
+		  };
+		},
+	},
 });
 
 export const { setName, updateValues } = algoSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectAlgo = (state: RootState) => state.algo;
+export const selectAlgo = (state: AppState) => state.algo;
 
 export default algoSlice.reducer;
