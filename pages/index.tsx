@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import AlgorithmDisplay from '@/components/algorithm/AlgorithmDisplay';
 
 export default function Home() {
