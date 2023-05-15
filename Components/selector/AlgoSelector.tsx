@@ -3,29 +3,32 @@ import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Algorithm from '../../algos/Algorithm';
 
 export default function AlgoSelector() {
-  const [age, setAge] = React.useState('');
+  const [selectedAlgorithm, setSelectedAlgorithm] = React.useState<Algorithm>(Algorithm.None);
 
-  const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-    setAge(event.target.value);
+  const handleAlgorithmChange = (event: SelectChangeEvent<unknown>) => {
+    setSelectedAlgorithm(event.target.value as Algorithm);
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120, maxWidth: 400, padding: 4 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="algorithm-select-label">Select an algorithm</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
+          labelId="algorithm-select-label"
+          id="algorithm-select"
+          value={selectedAlgorithm}
+          label="Select an algorithm"
+          onChange={handleAlgorithmChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {Object.values(Algorithm).map((algorithm) => (
+            <MenuItem key={algorithm} value={algorithm}>
+              {algorithm}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>
