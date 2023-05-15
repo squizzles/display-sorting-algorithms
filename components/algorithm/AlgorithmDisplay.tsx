@@ -1,14 +1,14 @@
 import Algorithm from '@/algos/Algorithm';
-import { selectAlgo } from '../../store/algoSlice';
+import { selectAlgo, selectAlgoType } from '../../store/algoSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 const AlgorithmDisplay: React.FC = () => {
-    const algoState = useSelector(selectAlgo);
+    const algoType = useSelector(selectAlgoType);
     const dispatch = useDispatch();
 
     return (
         <h1>
-            `Selected Algorithm: {algoState.type}`
+            `Selected Algorithm: {algoType}`
         </h1>
     );
 };

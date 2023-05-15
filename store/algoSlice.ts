@@ -3,7 +3,6 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AppState } from './store';
 import Algorithm from '@/algos/Algorithm';
 import { HYDRATE } from "next-redux-wrapper";
-import App from 'next/app';
 
 // Define a type for the slice state
 interface AlgoState {
@@ -46,5 +45,6 @@ export const { setName, updateValues } = algoSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectAlgo = (state: AppState) => state.algo;
+export const selectAlgoType = (state: AppState) => state.algo.type;
 
 export default algoSlice.reducer;
