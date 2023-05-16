@@ -1,4 +1,4 @@
-import Algorithm from '@/algos/Algorithm';
+import AlgorithmType from '@/algos/AlgorithmType';
 import { selectAlgo, selectAlgoType } from '../../store/algoSlice';
 import { useSelector, useDispatch } from 'react-redux';
 

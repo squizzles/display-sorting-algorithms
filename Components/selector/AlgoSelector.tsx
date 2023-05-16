@@ -4,13 +4,17 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Algorithm from '../../algos/Algorithm';
+import AlgorithmType from '../../algos/AlgorithmType';
+import { setName } from '@/store/algoSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAlgoType } from '@/store/algoSlice';
 
 export default function AlgoSelector() {
-  const [selectedAlgorithm, setSelectedAlgorithm] = React.useState<Algorithm>(Algorithm.None);
+const selectedAlgorithm = useSelector(selectAlgoType);
 
-  const handleAlgorithmChange = (event: SelectChangeEvent<unknown>) => {
-    setSelectedAlgorithm(event.target.value as Algorithm);
+  const dispatch = useDispatch();
+  function handleAlgorithmChange(algoName : string) {
+    dispatch(setName(algoName as AlgorithmType));
   };
 
   return (
@@ -22,9 +26,9 @@ export default function AlgoSelector() {
           id="algorithm-select"
           value={selectedAlgorithm}
           label="Select an algorithm"
-          onChange={handleAlgorithmChange}
+          onChange={e => handleAlgorithmChange(e.target.value as string)}
         >
-          {Object.values(Algorithm).map((algorithm) => (
+          {Object.values(AlgorithmType).map((algorithm) => (
             <MenuItem key={algorithm} value={algorithm}>
               {algorithm}
             </MenuItem>
