@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
-import AlgorithmDisplay from '@/Components/algorithm/AlgorithmDisplay';
-import AlgoSelector from '@/Components/selector/AlgoSelector';
+import AlgorithmDisplay from '@/components/algorithm/AlgorithmDisplay';
+import AlgoSelector from '@/components/selector/AlgoSelector';
 
 export default function Home() {
 	return (
+		//main page
 		<Fragment>
 			<AlgorithmDisplay/>
 			<AlgoSelector/>
