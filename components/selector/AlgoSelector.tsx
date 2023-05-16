@@ -15,7 +15,7 @@ const selectedAlgorithm = useSelector(selectAlgoType);
   const dispatch = useDispatch();
   function handleAlgorithmChange(algoName : string) {
     dispatch(setName(algoName as AlgorithmType));
-  };
+  }
 
   return (
     <Box sx={{ minWidth: 120, maxWidth: 400, padding: 4 }}>
