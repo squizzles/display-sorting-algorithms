@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AppState } from './store';
-import Algorithm from '@/algos/Algorithm';
+import AlgorithmType from '@/algos/AlgorithmType';
 import { HYDRATE } from "next-redux-wrapper";
 
 // Define a type for the slice state
@@ -13,7 +13,7 @@ interface AlgoState {
 // Define the initial state using that type
 const initialState: AlgoState = {
 	values: [],
-	type: Algorithm.None,
+	type: AlgorithmType.None,
 };
 
 export const algoSlice = createSlice({
@@ -21,7 +21,7 @@ export const algoSlice = createSlice({
 	initialState,
 	reducers: {
 		// Specify the type of algo currently being used
-		setName: (state, action: PayloadAction<Algorithm>) => {
+		setName: (state, action: PayloadAction<AlgorithmType>) => {
 			state.type = action.payload;
 		},
 		// Update global values to re-display
