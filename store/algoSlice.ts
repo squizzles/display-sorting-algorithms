@@ -46,5 +46,6 @@ export const { setName, updateValues } = algoSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
 export const selectAlgo = (state: AppState) => state.algo;
 export const selectAlgoType = (state: AppState) => state.algo.type;
+export const selectAlgoValues = (state: AppState) => state.algo.values;
 
 export default algoSlice.reducer;
