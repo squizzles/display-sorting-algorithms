@@ -27,7 +27,7 @@ const AlgorithmDisplay: React.FC = () => {
       newRandomData.push({ value: Math.random() * 100, pos: i });
     }
     dispatch(updateValues(newRandomData as any))
-  };
+  }
 
   return ( 
   
