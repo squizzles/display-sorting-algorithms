@@ -1,7 +1,7 @@
 import {AlgorithmType} from './AlgorithmType';
 import { IAlgorithm } from './IAlgorithm';
 import BubbleSort from './implementation/BubbleSort';
-import LinearSort from './implementation/LinearSort';
+import InsertionSort from './implementation/InsertionSort';
 /**
  * Algorithm Selector
  * Takes in given algorithm type, returns a class that can be used to generate Array
@@ -13,10 +13,10 @@ export function generateAlgorithm(type: AlgorithmType, data: Array<number>): IAl
         case AlgorithmType.BubbleSort:
             return new BubbleSort(data);
 
-        case AlgorithmType.LinearSort:
+        case AlgorithmType.InsertionSort:
         case AlgorithmType.None:
         default:  {
-            return new LinearSort(data);
+            return new InsertionSort(data);
         }
     }
 }
