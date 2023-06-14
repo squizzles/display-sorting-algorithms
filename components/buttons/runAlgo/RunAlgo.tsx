@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector, } from "react-redux";
 import { updateArray, selectAlgoValues, selectAlgoType } from "@/store/algoSlice";
+import { generateAlgorithm } from "@/algos/AlgorithmFactory";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
@@ -10,18 +11,13 @@ export default function RunAlgo() {
     const dispatch = useDispatch();
   
     async function runSelectedAlgo() {
-        const changeArray = [...array];
-        console.log(`running ${algoType} `);
-        switch (algoType) {
-            case "Bubble Sorting Algorithm":
-                console.log("running bubble sort");
-                await bubbleSort(changeArray);
-                break;
-            case "Linear Sorting Algorithm":
-                console.log("running linear sort");
-                await linearSort(changeArray);
-                break;
-        }
+      // Get the selected algorithm
+      const selectedAlgo = generateAlgorithm(algoType, array);
+
+      while (!selectedAlgo.isSorted()){
+        dispatch(updateArray(selectedAlgo.step()));
+        await delay(100);
+      }
     }
 
     async function bubbleSort(changeArray: number[]) {
@@ -60,17 +56,10 @@ export default function RunAlgo() {
           if (minIndex !== i) {
             // Swap elements
             [array[i], array[minIndex]] = [array[minIndex], array[i]];
-
-            await delay(100);
-      
-            dispatch(updateArray([...array]));
           }
         }
       }
 
-    
-      
-  
     function delay(duration: number): Promise<void> {
       return new Promise((resolve) => {
         setTimeout(resolve, duration);

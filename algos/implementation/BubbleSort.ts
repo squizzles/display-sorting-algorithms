@@ -1,6 +1,6 @@
 import { IAlgorithm } from '../IAlgorithm';
 
-export default class LinearSort implements IAlgorithm {
+export default class BubbleSort implements IAlgorithm {
 
     // Array of data to sort
     private data: Array<number>;

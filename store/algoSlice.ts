@@ -7,7 +7,7 @@ import { HYDRATE } from "next-redux-wrapper";
 // Define a type for the slice state
 interface AlgoState {
 	values: number[];
-	type: string;
+	type: AlgorithmType;
 }
 
 // Define the initial state using that type
