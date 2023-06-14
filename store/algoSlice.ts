@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AppState } from './store';
 import AlgorithmType from '@/algos/AlgorithmType';
@@ -6,7 +6,7 @@ import { HYDRATE } from "next-redux-wrapper";
 
 // Define a type for the slice state
 interface AlgoState {
-	values: Array<number>;
+	values: number[];
 	type: string;
 }
 
@@ -46,5 +46,9 @@ export const { setName, updateValues } = algoSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
 export const selectAlgo = (state: AppState) => state.algo;
 export const selectAlgoType = (state: AppState) => state.algo.type;
+export const selectAlgoValues = createSelector(
+	(state: AppState) => state.algo.values,
+	(values) => [...values] // Create a copy of the array
+  );
 
 export default algoSlice.reducer;
