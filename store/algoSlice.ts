@@ -1,7 +1,7 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AppState } from './store';
-import AlgorithmType from '@/algos/AlgorithmType';
+import { AlgorithmType } from '@/algos/AlgorithmType';
 import { HYDRATE } from "next-redux-wrapper";
 
 // Define a type for the slice state
@@ -25,7 +25,7 @@ export const algoSlice = createSlice({
 			state.type = action.payload;
 		},
 		// Update global values to re-display
-		updateValues: (state, action: PayloadAction<Array<number>>) => {
+		updateArray: (state, action: PayloadAction<number[]>) => {
 			state.values = action.payload;
 		},
 	},
@@ -41,7 +41,7 @@ export const algoSlice = createSlice({
 	},
 });
 
-export const { setName, updateValues } = algoSlice.actions;
+export const { setName, updateArray } = algoSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectAlgo = (state: AppState) => state.algo;

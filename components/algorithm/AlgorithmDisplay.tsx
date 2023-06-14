@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { selectAlgo, selectAlgoType } from '../../store/algoSlice';
-import { useSelector, useDispatch } from 'react-redux';
-=======
 import React from "react";
 import {
 	selectAlgoType,
@@ -20,7 +16,6 @@ const YAxis = dynamic(() => import("recharts").then((mod) => mod.YAxis), {
 });
 import { Bar } from "recharts";
 import { Box } from "@mui/material";
->>>>>>> 580af2fd6d7cdf63add73c2fd15603fbb6807029
 
 const AlgorithmDisplay: React.FC = () => {
 	const algoType = useSelector(selectAlgoType);

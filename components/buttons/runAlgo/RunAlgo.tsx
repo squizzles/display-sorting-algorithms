@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useDispatch, useSelector, } from "react-redux";
-import { updateValues, selectAlgoValues, selectAlgoType } from "@/store/algoSlice";
+import { updateArray, selectAlgoValues, selectAlgoType } from "@/store/algoSlice";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
@@ -27,43 +27,43 @@ export default function RunAlgo() {
     async function bubbleSort(changeArray: number[]) {
       for (let i = 0; i < changeArray.length; i++) {
         for (let j = 0; j < changeArray.length - 1; j++) {
-          const updateArray = [...changeArray];
+          const array = [...changeArray];
   
           if (changeArray[j] > changeArray[j + 1]) {
             let temp = changeArray[j];
             changeArray[j] = changeArray[j + 1];
             changeArray[j + 1] = temp;
   
-            updateArray[j] = changeArray[j];
-            updateArray[j + 1] = changeArray[j + 1];
+            array[j] = changeArray[j];
+            array[j + 1] = changeArray[j + 1];
   
             await delay(100); // Delay between each batch (adjust the duration as needed)
   
-            dispatch(updateValues(updateArray));
+            dispatch(updateArray(array));
           }
         }
       }
     }
 
     async function linearSort(changeArray: number[]) {
-        const updateArray = [...changeArray];
+        const array = [...changeArray];
       
-        for (let i = 0; i < updateArray.length - 1; i++) {
+        for (let i = 0; i < array.length - 1; i++) {
           let minIndex = i;
       
-          for (let j = i + 1; j < updateArray.length; j++) {
-            if (updateArray[j] < updateArray[minIndex]) {
+          for (let j = i + 1; j < array.length; j++) {
+            if (array[j] < array[minIndex]) {
               minIndex = j;
             }
           }
       
           if (minIndex !== i) {
             // Swap elements
-            [updateArray[i], updateArray[minIndex]] = [updateArray[minIndex], updateArray[i]];
-      
+            [array[i], array[minIndex]] = [array[minIndex], array[i]];
+
             await delay(100);
       
-            dispatch(updateValues([...updateArray]));
+            dispatch(updateArray([...array]));
           }
         }
       }
