@@ -2,11 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	--foreground-rgb: 0, 0, 0;
-	--background-start-rgb: 214, 219, 220;
-	--background-end-rgb: 255, 255, 255;
-}
+
+
+  :root {
+	/* CSS HEX */
+	--timberwolf: #dad7cdff;
+	--sage: #a3b18aff;
+	--fern-green: #588157ff;
+	--tangerine: #f08700ff;
+	--hunter-green: #3a5a40ff;
+  
+	/* CSS HSL */
+	--timberwolf: hsla(46, 15%, 83%, 1);
+	--sage: hsla(82, 20%, 62%, 1);
+	--fern-green: hsla(119, 19%, 42%, 1);
+	--tangerine: hsla(34, 100%, 47%, 1);
+	--hunter-green: hsla(131, 22%, 29%, 1);
+  }
+  
+  /* Usage example */
+  
+  
 
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -16,12 +32,25 @@
 	}
 }
 
-body {
-	color: rgb(var(--foreground-rgb));
-	background: linear-gradient(
-			to bottom,
-			transparent,
-			rgb(var(--background-end-rgb))
-		)
-		rgb(var(--background-start-rgb));
-}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--fern-green);
+    padding: 10px;
+	height: 80px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+    margin-right: 10px;
+	color: var(--timberwolf);
+  }
+  
+  .header__icon {
+    font-size: 24px;
+  }
+  
+
+
+

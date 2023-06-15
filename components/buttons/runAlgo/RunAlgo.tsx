@@ -3,6 +3,7 @@ import { useDispatch, useSelector, } from "react-redux";
 import { updateValues, selectAlgoValues, selectAlgoType } from "@/store/algoSlice";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { colors } from "@/styles/colors";
 
 export default function RunAlgo() {
     const array = useSelector(selectAlgoValues);
@@ -80,8 +81,8 @@ export default function RunAlgo() {
   
 
 	return (
-		<Box sx={{ minWidth: 120, maxWidth: 400, padding: 4 }}>
-			<Button onClick={runSelectedAlgo}>Run Algorithm</Button>
+		<Box sx={{ minWidth: 120, padding: 4, textAlign: "center",  }}>
+			<Button onClick={runSelectedAlgo}  >Run Algorithm</Button>
 		</Box>
 	);
 }
