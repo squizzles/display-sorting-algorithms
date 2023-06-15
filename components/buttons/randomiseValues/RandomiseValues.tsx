@@ -1,13 +1,13 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
-import { updateArray } from "@/store/algoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { updateArray, algoIsRunning } from "@/store/algoSlice";
 import { generateRandomArray } from "@/utils/RandomGenerator";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 export default function RandomiseValues() {
-
 	const dispatch = useDispatch();
+	const algoRunning = useSelector(algoIsRunning);
 
 	React.useEffect(() => {
 		populateRandomData()
@@ -18,8 +18,8 @@ export default function RandomiseValues() {
 	}
 
 	return (
-		<Box sx={{ minWidth: 120, padding: 4, justifyContent: "center", textAlign: "center",  }}>
-			<Button onClick={populateRandomData} >Randomize Data</Button>
+		<Box sx={{ minWidth: 120, maxWidth: 400, padding: 4 }}>
+			<Button disabled={algoRunning} onClick={populateRandomData}>Randomize Data</Button>
 		</Box>
 	);
 }

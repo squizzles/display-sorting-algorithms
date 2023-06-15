@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useDispatch, useSelector, } from "react-redux";
-import { updateArray, selectAlgoValues, selectAlgoType } from "@/store/algoSlice";
+import { updateArray, selectAlgoValues, selectAlgoType, setIsRunning, algoIsRunning } from "@/store/algoSlice";
 import { generateAlgorithm } from "@/algos/AlgorithmFactory";
+import { AlgorithmType } from "@/algos/AlgorithmType";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { colors } from "@/styles/colors";
@@ -9,9 +10,17 @@ import { colors } from "@/styles/colors";
 export default function RunAlgo() {
     const array = useSelector(selectAlgoValues);
     const algoType = useSelector(selectAlgoType);
+    const algoRunning = useSelector(algoIsRunning);
     const dispatch = useDispatch();
+
+    function algoNotSelected(): boolean {
+      return algoType === AlgorithmType.None
+    }
   
     async function runSelectedAlgo() {
+      // Set Algo to running
+      dispatch(setIsRunning(true));
+
       // Get the selected algorithm
       const selectedAlgo = generateAlgorithm(algoType, array);
 
@@ -19,6 +28,8 @@ export default function RunAlgo() {
         dispatch(updateArray(selectedAlgo.step()));
         await delay(100);
       }
+
+      dispatch(setIsRunning(false));
     }
 
     function delay(duration: number): Promise<void> {
@@ -29,7 +40,7 @@ export default function RunAlgo() {
 
 	return (
 		<Box sx={{ minWidth: 120, padding: 4, textAlign: "center",  }}>
-			<Button onClick={runSelectedAlgo}>Run Algorithm</Button>
+			<Button disabled={algoRunning || algoNotSelected()} onClick={runSelectedAlgo}>Run Algorithm</Button>
 		</Box>
 	);
 }
