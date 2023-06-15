@@ -1,19 +1,20 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import { updateValues } from "@/store/algoSlice";
+import { updateArray } from "@/store/algoSlice";
+import { generateRandomArray } from "@/utils/RandomGenerator";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 export default function RandomiseValues() {
+
 	const dispatch = useDispatch();
 
+	React.useEffect(() => {
+		populateRandomData()
+	}, []);
+
 	function populateRandomData() {
-		const newRandomData: number[] = [];
-		for (let i = 0; i < 25; i++) {
-			newRandomData.push( Math.random() * 100 );
-		}
-		console.log(`updated array with ${newRandomData} `);	
-		dispatch(updateValues(newRandomData as any));
+		dispatch(updateArray(generateRandomArray(25)));
 	}
 
 	return (

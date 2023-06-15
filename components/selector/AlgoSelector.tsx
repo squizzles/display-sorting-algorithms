@@ -4,7 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import AlgorithmType from '../../algos/AlgorithmType';
+import { AlgorithmType } from '../../algos/AlgorithmType';
 import { setName } from '@/store/algoSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAlgoType } from '@/store/algoSlice';
