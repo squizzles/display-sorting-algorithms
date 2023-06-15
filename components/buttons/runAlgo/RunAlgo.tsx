@@ -29,7 +29,7 @@ export default function RunAlgo() {
 
 	return (
 		<Box sx={{ minWidth: 120, padding: 4, textAlign: "center",  }}>
-			<Button onClick={runSelectedAlgo}  >Run Algorithm</Button>
+			<Button onClick={runSelectedAlgo}>Run Algorithm</Button>
 		</Box>
 	);
 }

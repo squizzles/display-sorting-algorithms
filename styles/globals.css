@@ -4,8 +4,11 @@
 
 
 
+
+
   :root {
 	/* CSS HEX */
+	--primary:
 	--timberwolf: #dad7cdff;
 	--sage: #a3b18aff;
 	--fern-green: #588157ff;
@@ -35,10 +38,12 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     background-color: var(--fern-green);
     padding: 10px;
+	padding-right: 10%;
 	height: 80px;
+	border: 0;
   }
   
   .header h1 {
