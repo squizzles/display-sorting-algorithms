@@ -25,8 +25,6 @@ export default function RunAlgo() {
         setTimeout(resolve, duration);
       });
     }
-  
-  
 
 	return (
 		<Box sx={{ minWidth: 120, maxWidth: 400, padding: 4 }}>
