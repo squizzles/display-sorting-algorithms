@@ -1,4 +1,4 @@
-import { IAlgorithm } from '../IAlgorithm';
+import { IAlgorithm } from '@/algos/IAlgorithm';
 
 export default class InsertionSort implements IAlgorithm {
 

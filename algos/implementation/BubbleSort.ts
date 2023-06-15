@@ -1,5 +1,4 @@
-import { SwipeableDrawer } from '@mui/material';
-import { IAlgorithm } from '../IAlgorithm';
+import { IAlgorithm } from '@/algos/IAlgorithm';
 
 export default class BubbleSort implements IAlgorithm {
 
