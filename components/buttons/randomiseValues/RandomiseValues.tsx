@@ -18,7 +18,7 @@ export default function RandomiseValues() {
 	}
 
 	return (
-		<Box sx={{ minWidth: 120, maxWidth: 400, padding: 4 }}>
+		<Box sx={{ minWidth: 120, maxWidth: 400, padding: 4, justifyItems: "center" }}>
 			<Button disabled={algoRunning} onClick={populateRandomData}>Randomize Data</Button>
 		</Box>
 	);
