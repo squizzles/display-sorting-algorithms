@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateArray, algoIsRunning } from "@/store/algoSlice";
 import { generateRandomArray } from "@/utils/RandomGenerator";
@@ -9,11 +9,12 @@ export default function RandomiseValues() {
 	const dispatch = useDispatch();
 	const algoRunning = useSelector(algoIsRunning);
 
-	React.useEffect(() => {
-		populateRandomData()
-	}, []);
+	useEffect(() => {
+		dispatch(updateArray(generateRandomArray(25)));
+	}
+	, []);
 
-	function populateRandomData() {
+	function populateRandomData(): void {
 		dispatch(updateArray(generateRandomArray(25)));
 	}
 

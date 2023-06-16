@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	selectAlgoValues,
 } from "../../store/algoSlice";
@@ -18,6 +18,8 @@ import { Box } from "@mui/material";
 
 
 const AlgorithmDisplay: React.FC = () => {
+	
+
 	const algoValues = useSelector(selectAlgoValues);
   const algoValuesDisplay = algoValues.map((value, index) => {
     return { pos: index, value: value };
