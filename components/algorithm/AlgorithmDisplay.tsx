@@ -16,20 +16,18 @@ const YAxis = dynamic(() => import("recharts").then((mod) => mod.YAxis), {
 import { Bar } from "recharts";
 import { Box } from "@mui/material";
 
-
 const AlgorithmDisplay: React.FC = () => {
 	
 
 	const algoValues = useSelector(selectAlgoValues);
-  const algoValuesDisplay = algoValues.map((value, index) => {
-    return { pos: index, value: value };
-  });
+	const algoValuesDisplay = algoValues.map((value, index) => {
+		return { pos: index, value: value };
+	});
 
 	return (
-    <Box sx={{ display: "flex", justifyContent: "center" }}>
-			
+		<Box className="display">
 			<BarChart width={800} height={300} data={algoValuesDisplay}>
-				<XAxis dataKey="pos"  />
+				<XAxis dataKey="pos" />
 				<YAxis />
 				<Bar dataKey="value" fill="var(--tangerine)" />
 			</BarChart>
