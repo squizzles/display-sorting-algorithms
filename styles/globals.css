@@ -59,14 +59,33 @@
 }
 
 .header {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	background-color: var(--fern-green);
-	padding: 10px;
-	padding-right: 10%;
-	height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--fern-green);
+    
+	padding-left: 5%;
+	padding-right: 5%;
+	height: 100px;
 	border: 0;
+}
+
+.title {
+display: flex;
+align-items: center;
+
+background-color: var(--fern-green);
+border: 0;
+}
+
+.header h1 {
+font-size: 36px;
+margin-right: 10px;
+color: var(--timberwolf);
+}
+
+.header__icon {
+font-size: 24px;
 }
 
 .header h1 {
