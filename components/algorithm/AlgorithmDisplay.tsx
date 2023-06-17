@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
-	selectAlgoType,
 	selectAlgoValues,
 } from "../../store/algoSlice";
 import { useSelector } from "react-redux";
@@ -18,19 +17,19 @@ import { Bar } from "recharts";
 import { Box } from "@mui/material";
 
 const AlgorithmDisplay: React.FC = () => {
-	const algoType = useSelector(selectAlgoType);
+	
+
 	const algoValues = useSelector(selectAlgoValues);
-  const algoValuesDisplay = algoValues.map((value, index) => {
-    return { pos: index, value: value };
-  });
+	const algoValuesDisplay = algoValues.map((value, index) => {
+		return { pos: index, value: value };
+	});
 
 	return (
-		<Box>
-			<h1>Selected Algorithm: {algoType}</h1>
+		<Box className="display">
 			<BarChart width={800} height={300} data={algoValuesDisplay}>
-				<XAxis dataKey="pos" stroke="#8884d8" />
+				<XAxis dataKey="pos" />
 				<YAxis />
-				<Bar dataKey="value" fill="#8884d8" />
+				<Bar dataKey="value" fill="var(--tangerine)" />
 			</BarChart>
 		</Box>
 	);
