@@ -4,20 +4,24 @@ export default class InsertionSort implements IAlgorithm {
 
     // Array of data to sort
     private data: number[];
-    private currentIndex: number;
+    private currentIndex_i: number;
+    private currentIndex_j: number;
+    private key: number;
     private isFinished: boolean = false;
 
     constructor(data: number[]){
         // TODO - Convert number to custom data type
         this.data = data;
         // Insertion sort starts by comparing 1st element to the 0th
-        this.currentIndex = 1;
+        this.currentIndex_i = 1;
+        this.currentIndex_j = 0;
+        this.key = data[1];
     }
 
     // Modify the data one step at a time
     public step(): number[] {
         // Ensure current step won't go out of bounds
-        if (this.isFinished || this.currentIndex == this.data.length){
+        if (this.isFinished || this.currentIndex_i == this.data.length){
             this.isFinished = true;
             return this.data;
         }
@@ -25,23 +29,27 @@ export default class InsertionSort implements IAlgorithm {
         var arrayCopy = [...this.data];
 
         // Sort 1 step in algo
-        const key = arrayCopy[this.currentIndex];
-        var j = this.currentIndex - 1;
+        
 
-        /* Move elements of arr[0..i-1], that are
+        /* Move element j of arr[0..i-1], that are
         greater than key, to one position ahead
         of their current position */
-        while (j >= 0 && arrayCopy[j] > key) {
-            const temp = arrayCopy[j+1]
-            arrayCopy[j+1] = arrayCopy[j];
-            arrayCopy[j] = temp;
+        if (this.currentIndex_j >= 0 && arrayCopy[this.currentIndex_j] > this.key) {
+            const temp = arrayCopy[this.currentIndex_j+1]
+            arrayCopy[this.currentIndex_j+1] = arrayCopy[this.currentIndex_j];
+            arrayCopy[this.currentIndex_j] = temp;
 
+            
+        } 
+        if (this.currentIndex_j == -1 ){
+            this.currentIndex_i = this.currentIndex_i + 1;
+            this.currentIndex_j = this.currentIndex_i ;
+            this.key = arrayCopy[this.currentIndex_i];
 
-            j = j - 1;
         }
+        this.currentIndex_j = this.currentIndex_j - 1;
 
         // Update state after iteration
-        this.currentIndex++;
         this.data = arrayCopy;
 
         return this.data;

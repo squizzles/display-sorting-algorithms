@@ -26,7 +26,7 @@ export default function RunAlgo() {
 
       while (!selectedAlgo.isSorted()){
         dispatch(updateArray(selectedAlgo.step()));
-        await delay(100);
+        await delay(1000);
       }
 
       dispatch(setIsRunning(false));
