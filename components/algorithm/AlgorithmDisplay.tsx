@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import {
-	selectAlgoValues,
-} from "../../store/algoSlice";
+import React from "react";
+import { selectAlgoValues } from "../../store/algoSlice";
 import { useSelector } from "react-redux";
 import dynamic from "next/dynamic";
 const BarChart = dynamic(() => import("recharts").then((mod) => mod.BarChart), {
@@ -17,15 +15,13 @@ import { Bar } from "recharts";
 import { Box } from "@mui/material";
 
 const AlgorithmDisplay: React.FC = () => {
-	
-
 	const algoValues = useSelector(selectAlgoValues);
 	const algoValuesDisplay = algoValues.map((value, index) => {
 		return { pos: index, value: value };
 	});
 
 	return (
-		<Box className="display">
+		<Box sx={{ display: "flex", justifyContent: "center" }}>
 			<BarChart width={800} height={300} data={algoValuesDisplay}>
 				<XAxis dataKey="pos" />
 				<YAxis />
